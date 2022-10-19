@@ -1,13 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import News
+from .models import News, Category
 
 # Create your views here.
 
 def index(request):
    # print(request ,'1111')
    news = News.objects.all()
-   context = {'news':news, 'title': 'Список новостей'}
+   categories = Category.objects.all()
+   context = {'news':news, 'title': 'Список новостей', 'category': categories,}
    return render(request, template_name='news/index.html', context=context)
 
 def test(request):
